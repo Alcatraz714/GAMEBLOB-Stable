@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(0, 41, 83);
+}
+
+.main{
+    display: flex;
+    border: 2px black solid;
+    border-radius: 25px;
+    margin: 5%;
+    justify-content: center;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 11%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(27, 26, 26);
+    color: rgb(0,114,217);
+}
+.login, .signup{
+    margin: 1%;
+    padding: 2%;
+    flex-grow: 1;
+}
+.login{
+    border-right: rgba(10, 13, 14, 0.438) 3px solid;
+    padding-right: 10%;
+}
+
+hr{
+    border: 0; 
+    height: 1px; 
+    background-color: rgb(0,114,217);
+    opacity: 0.5;
+}
