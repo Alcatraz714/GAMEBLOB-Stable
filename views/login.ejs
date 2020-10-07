@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/login_test.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
-  </head>
-  <style>
-    body {
-      background-image: url('https://1.bp.blogspot.com/-9GOpPFEb-YA/XmlIzOPL8dI/AAAAAAAAMTM/3njbx0695hUSzXPg5D8Q5_82SGiKsoaGgCLcBGAsYHQ/s1600/arcade-game-wallpaper-4k.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style>
-  <style>
-    div {
-      background-image: url('https://images.hdqwalls.com/wallpapers/dark-abstract-black-minimal-4k-q0.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style>
-    
+<%- include("partials/header.ejs") %> 
+
+<link rel="stylesheet" href="assets/css/login_test.css">
     <body>
+        <%- include("partials/nav.ejs") %>
         <div class="main container">
             <div class="login">
                 <form>
@@ -103,8 +85,4 @@
 
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    </body>
-</html>
+<%- include("partials/footer.ejs") %> 

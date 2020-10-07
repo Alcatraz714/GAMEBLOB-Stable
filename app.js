@@ -10,7 +10,7 @@ app.get("/", function(req,res){
 }) 
 
 app.get("/login", function(req,res){
-    res.send("This will be the login page")
+    res.render("login.ejs")
 })
 
 app.get("/home", function(req,res){
