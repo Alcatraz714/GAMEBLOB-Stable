@@ -1,0 +1,67 @@
+<%- include("partials/header.ejs") %> 
+<body>
+    <link rel="stylesheet" href="assets/css/home.css">
+    <%- include("partials/nav.ejs") %> 
+    <div class="container">
+        <h3 class="h3text">Discover new games with us!</h3>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <a href=""><img class="d-block w-100" src="<%= car_game[0].img%>"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <p><%= car_game[0].desc%></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <a href=""><img class="d-block w-100" src="<%= car_game[1].img%>"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <p><%= car_game[1].desc%></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <a href=""><img class="d-block w-100" src="<%= car_game[2].img%>"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <p><%= car_game[2].desc%></p>
+                </div>
+            </div> 
+            
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="main">
+    <div class="container">
+        <h3 class="H31" style="font-weight: 800;">Browse Our Store</h3>
+        <div class="row">
+            <% all_game.forEach(game => { %>
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card">
+                        <a href=""><img class="card-img-top" src="<%= game.img%>"></a>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= game.title%> </h5>
+                            <hr>
+                            <p class="card-text"><%= game.desc%></p>
+                            <a href="#" class="btn btn-primary">Buy From Uplay</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %> 
+            
+        </div>
+    </div>
+    </div>
+
+<%- include("partials/footer.ejs") %> 

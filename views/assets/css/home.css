@@ -1,0 +1,116 @@
+.main{
+    border: 2px black solid;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0,114,217);
+}
+
+.container{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.carousel .carousel-item {
+    height: 500px;
+    margin-top: 0%;
+}
+  
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 500px;
+}
+
+.card{
+    margin-right: 15%;
+    background-color:  rgba(0,114,217, 0.425);
+    margin-bottom: 2%;
+}
+
+.card-body{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);  
+}
+body {
+    background-image: url('../img/abstract.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+  }
+
+h5{
+    font-size: 30px;
+    background-color: rgb(0, 0, 0,0.7);
+    border-radius: 15px;
+}
+p{
+    font-size: 15px;
+    background-color: rgb(0, 0, 0,0.7);
+    background-size:cover;
+    border-radius: 15px;
+
+}
+.bg-image {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+.card:hover {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 8px rgba(0,123,255, 0.425);       
+}
+.btn:hover {
+    background-color: rgba(255, 217, 0, 0.897);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: inline-block;
+  }
+h4{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(48, 43, 43, 0.432);
+}
+
+h3{
+    margin-top: 10%;
+    margin-bottom: 1%;
+    text-align: left;
+    font-size: 35px;
+    color: rgb(255, 255, 255);   
+}
+.H31{
+    margin-bottom: 5%;
+    text-align: center;
+    font-size: 45px;
+    color: rgb(0,123,255);
+    background-color:rgba(0, 0, 0, 0.438);
+    border-radius: 2%;  
+}
+hr{
+    border: 0; 
+    height: 1px; 
+    background-color: rgb(0,114,217);
+    opacity: 1;
+}
+
+.h3text{
+    font-weight: 800; 
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+}
+
+.btn-primary {
+    background-color: rgb(0,114,217);
+    border-color: rgb(0,114,217);
+  }
+  
+  .btn-outline-primary {
+    color: rgb(0,114,217);
+    border-color: rgb(0,114,217);
+  }
