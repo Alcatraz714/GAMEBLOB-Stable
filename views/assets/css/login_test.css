@@ -32,14 +32,10 @@ hr{
     border: 0; 
     height: 1px; 
     background-color: rgb(0,114,217);
-    opacity: 0.5;
+    opacity: 1;
 }
 
-div{
-    background-image: url('https://images.hdqwalls.com/wallpapers/dark-abstract-black-minimal-4k-q0.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 
 .btn-primary {
     color: #fff;
@@ -51,4 +47,9 @@ div{
     background-color: #007bff;
     border-color: #007bff;
     color: #fff;
+}
+
+footer{
+    flex: 0 0 50px;
+    background: black;
 }
