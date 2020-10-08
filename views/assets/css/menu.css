@@ -1,0 +1,25 @@
+.container{
+    margin-top: 5%;
+    flex: center;
+}
+
+.carousel .carousel-item {
+    height: 500px;
+}
+  
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 500px;
+}
+
+.card{
+    margin: 2%;
+}
+
+.card-body{
+    background-color: black;
+    color: white;
+}
