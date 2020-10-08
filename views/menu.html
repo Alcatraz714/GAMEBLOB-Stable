@@ -3,97 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Store Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/menu.css">
 </head>
 <body>
-    <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
+        </ol>
+        <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="data:image/jpeg;base64,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" alt="First slide">
+                <img class="d-block w-100" src="https://www.godisageek.com/wp-content/uploads/Doom-Eternal-Key-Art.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>A Sundar Image</h5>
-                    <p>An even sundar caption</p>
+                    <h5 class="blackbox"> Doom Eternal 2020 </h5><br>
+                    <p class="blackbox"> Doom Eternal is a first-person shooter video game developed by id Software and published by Bethesda Softworks. </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="data:image/jpeg;base64,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" alt="Second slide">
+                <img class="d-block w-100" src="https://cdn.mos.cms.futurecdn.net/GSYDS6PSPWPzWm3fFGj5gj-1200-80.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                    <h5 class="blackbox">No Man's Sky</h5><br>
+                    <p class="blackbox">No Man's Sky is an exploration real-time strategy survival game developed and published by the indie studio Hello Games.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="2wCEAAkGBxASEhUSEhAQFRAVFRUVFRUQFRUPEBUQFRUWFhURFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lICUtLS0tLS0tLS0tLS0tLS0tLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf" alt="Third slide">
+                <img class="d-block w-100" src="https://i.ytimg.com/vi/jEp9yyhwZFE/maxresdefault.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                    <h5 class="blackbox">Genshin Impact</h5><br>
+                    <p class="blackbox">Journey across a magical realm of diverse cultures and kingdoms in the epic title of Genshin Impact.</p>
                 </div>
             </div>
-            </div>
+        </div>
+
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
-        </div>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4">
-            <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
                 <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ" alt="Card image cap">
+                    <img class="card-img-top" src="https://ubistatic19-a.akamaihd.net/ubicomstatic/en-ca/global/game-info/acb_nakedbox_mobile_161339.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Assassin's Creed Brotherhood</h5>
+                        <p class="card-text">Assassin's Creed: Brotherhood is a 2010 action-adventure video game developed by Ubisoft Montreal and published by Ubisoft. It is the third major installment in the Assassin's Creed series, and a direct sequel to 2009's Assassin's Creed II.</p>
+                        <a href="#" class="btn btn-primary">Buy From Uplay</a>
                     </div>
                 </div>
             </div>
-        
-        
             <div class="col-sm-6 col-md-6 col-lg-4">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ" alt="Card image cap">
+                    <img class="card-img-top" src="https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/acrogue_remastered-gameinfo-boxshot_art-ubinew-02-348x434_316967.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Assassin's Creed Rouge</h5>
+                        <p class="card-text">Assassin's Creed Rogue an adventurous Assassin to a grim Templar willing to hunt down his former brothers. Experience the events that lead Shay down a dark path and set him on a course that will forever change the fate of the Brotherhood.</p>
+                        <a href="#" class="btn btn-primary">Buy from Uplay</a>
                     </div>
                 </div>
             </div>
-        
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://1.bp.blogspot.com/-wPZXtv15jGI/XVGlh0eCodI/AAAAAAAAQqs/9TparRnnTlQA7TV_fhZXfMX8e02VSsImACLcBGAs/s1600/creed_box.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Assassins Creed Director's Cut</h5>
+                        <p class="card-text">Assassin's Creed is an action-adventure video game developed by Ubisoft Montreal and published by Ubisoft. It is the first installment in the Assassin's Creed series.Altaïr Ibn-La'Ahad, one of the game's protagonists.</p>
+                        <a href="#" class="btn btn-primary">Buy from Uplay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://1.bp.blogspot.com/-wPZXtv15jGI/XVGlh0eCodI/AAAAAAAAQqs/9TparRnnTlQA7TV_fhZXfMX8e02VSsImACLcBGAs/s1600/creed_box.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Assassins Creed Director's Cut</h5>
+                        <p class="card-text">Assassin's Creed is an action-adventure video game developed by Ubisoft Montreal and published by Ubisoft. It is the first installment in the Assassin's Creed series.Altaïr Ibn-La'Ahad, one of the game's protagonists.</p>
+                        <a href="#" class="btn btn-primary">Buy from Uplay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
