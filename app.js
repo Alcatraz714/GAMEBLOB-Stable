@@ -1,16 +1,62 @@
-var express = require("express")
-var app = express()
-var pfname = "mg"
+const express = require("express"),
+      app = express(),
+      bodyParser = require("body-parser"),
+      mongoose = require("mongoose")
 
+app.use(bodyParser.urlencoded({extended:true}))
+mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const game = require("./models/games.js"),
+      admin = require("./models/admins.js")
+      //users = require("./models/users.js")
+
+
+function dataProcessedMongo(err, data){
+    if(err){
+        console.log(err)
+    }else{
+        console.log(data)
+    }
+}
 
 app.use(express.static(__dirname + '/views'));
 
 app.get("/", function(req,res){
-    res.render("index.ejs", {pfname : pfname})
+    res.render("index.ejs")
 }) 
 
 app.get("/login", function(req,res){
     res.render("login.ejs")
+})
+
+app.get("/admin", function(req,res){
+    res.render("admin.ejs")
+})
+
+app.post("/admin", function(req,res){
+    const user1 = req.body.admin.user;
+    const pass = req.body.admin.pass;
+    admin.findOne({user : user1},function(err, user){
+        const real_pass = user.password
+        //console.log(real_pass)
+        if(pass===real_pass){
+            res.redirect("/admin/addGame")
+        }else{
+            res.redirect("/admin")
+        }
+    })
+})
+
+app.get("/admin/addGame", function(req,res){
+    res.render("addGame.ejs")
+})
+
+app.post("/admin/addGame", function(req,res){
+    
+    req.body.game.img = req.body.img
+    const gameToAdd = req.body.game
+    game.create(gameToAdd, dataProcessedMongo)
+    res.redirect("/admin/addGame")
 })
 
 app.get("/home", function(req,res){
@@ -34,7 +80,7 @@ app.post("/addFeedback", function(req,res){
     res.redirect("/")
 })
 
-app.get("/search", function(req,res){
+app.get("/home/search", function(req,res){
     res.send("This will be the search page") 
 })
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Game</title>
+</head>
+<body>
+    <h1>Add a Game:</h1>
+    <form action="/admin/addGame" method="POST">
+        <input type="text" name="game[name]" placeholder="title of game"><br>
+        <textarea rows="4" cols="50" name="game[desc]" placeholder="description"></textarea><br>
+        <input type="text" name="game[price]" placeholder="price"><br>
+        <input type="text" name="img[high_res]" placeholder="high-res img 1"><br>
+        <input type="text" name="img[high_res]" placeholder="high-res img 2"><br>
+        <input type="text" name="img[high_res]" placeholder="high-res img 3"><br>
+        <input type="text" name="img[title_img]" placeholder="title card img"><br>
+        <input type="text" name="game[dev]" placeholder="developer name"><br>
+        <input type="text" name="game[publisher]" placeholder="publisher name"><br>
+        <input type="date" name="game[release]" placeholder="release date"><br>
+        <input type="text" name="game[sys_reqs]" placeholder="system reqs"><br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
