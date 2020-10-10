@@ -38,7 +38,7 @@ app.post("/admin", function(req,res){
     const pass = req.body.admin.pass;
     admin.findOne({user : user1},function(err, user){
         const real_pass = user.password
-        //console.log(real_pass)
+        console.log(real_pass)
         if(pass===real_pass){
             res.redirect("/admin/addGame")
         }else{

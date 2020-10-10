@@ -10,7 +10,11 @@ const gameDisplaySchema = new mongoose.Schema({
         }],
         title_img : String
     },
-    sys_req : String
+    sys_req : String,
+    rating : Number,
+    dev : String,
+    publisher : String,
+    release : Date
 })
 
 module.exports = mongoose.model("game", gameDisplaySchema); 
