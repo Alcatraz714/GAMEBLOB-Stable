@@ -3,6 +3,7 @@ const express = require("express"),
       bodyParser = require("body-parser"),
       mongoose = require("mongoose")
 
+
 app.use(bodyParser.urlencoded({extended:true}))
 mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -55,7 +56,16 @@ app.post("/admin/addGame", function(req,res){
     
     req.body.game.img = req.body.img
     const gameToAdd = req.body.game
+    //console.log(gameToAdd)
     game.create(gameToAdd, dataProcessedMongo)
+    res.redirect("/admin/addGame")
+})
+
+app.post("/admin/addGame2", function(req,res){
+    
+    const gameToAdd = req.body.game
+    //console.log(gameToAdd)
+    game.updateOne({name:gameToAdd.name},{$push : {sys_req : gameToAdd.sys_req}},dataProcessedMongo)
     res.redirect("/admin/addGame")
 })
 

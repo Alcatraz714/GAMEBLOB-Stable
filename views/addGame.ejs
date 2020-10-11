@@ -18,8 +18,13 @@
         <input type="text" name="game[dev]" placeholder="developer name"><br>
         <input type="text" name="game[publisher]" placeholder="publisher name"><br>
         <input type="date" name="game[release]" placeholder="release date"><br>
-        <input type="text" name="game[sys_reqs]" placeholder="system reqs"><br>
+        
         <input type="text" name="game[rating]" placeholder="rating"><br>
+        <input type="submit" value="submit">
+    </form>
+    <form action="/admin/addGame2" method="POST">
+        <input type="text" name="game[name]" placeholder="title of game"><br>
+        <input type="text" name="game[sys_req]" placeholder="rating"><br>
         <input type="submit" value="submit">
     </form>
 </body>
