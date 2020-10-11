@@ -1,16 +1,16 @@
 .title h1{
     padding: 10%;
+    color: white;
 }
 
 .title{
-    background-size: contain;
+    background-size: 100px;
 }
 
 .content{
     border: 2px black solid;
     justify-content: center;
     width: 100%;
-    
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(0, 0, 0);
     color: rgb(0,114,217);
@@ -38,9 +38,91 @@ hr{
     border: 0; 
     height: 1px; 
     background-color: rgb(0,114,217);
-    opacity: 1;
+    opacity: 0.9;
 }
 
+.title{
+    background-image: url('https://images.hdqwalls.com/download/doom-eternal-2020-5k-6q-2560x1440.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: black;
+    border: black;
+}
+h2{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
 .comment-user{
-    border : 1px rgb(0,114,217) solid;
+    border-radius: 5px;
+}
+.submit{
+    color:  white;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    background-color: rgb(0,114,217);
+    border: black;
+}
+.submit:hover {
+    background-color: rgba(255, 217, 0, 0.897);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 3px rgba(0,114,217, 0.8);  
+  }
+h4{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.req{
+    background-color: rgb(0, 29, 158);
+    border: black;
+    border-radius: 10px;
+}
+.list{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.about{
+    background-color: rgb(0, 29, 158);
+    border: black;
+    border-radius: 10px;
+}
+.desc{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
+h1{
+    font-size: 50px;
+    color: white;
+    text-align: left;
+}
+.comments{
+    background-color:black;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.content1{
+    background-color:black;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.hr1{
+    height: 10px;
+    background-color: rgba(255, 217, 0, 0.897);
+}
+.hr2{
+    height: 10px;
+    background-color: rgba(255, 217, 0, 0.897);
 }
