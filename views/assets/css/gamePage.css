@@ -1,0 +1,46 @@
+.title h1{
+    padding: 10%;
+}
+
+.title{
+    background-size: contain;
+}
+
+.content{
+    border: 2px black solid;
+    justify-content: center;
+    width: 100%;
+    
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0,114,217);
+}
+
+.carousel .carousel-item {
+    height: 500px;
+    margin-top: 0%;
+}
+  
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 500px;
+}
+
+.title-img{
+    width: 150px;
+    height: 150px;
+}
+
+hr{
+    border: 0; 
+    height: 1px; 
+    background-color: rgb(0,114,217);
+    opacity: 1;
+}
+
+.comment-user{
+    border : 1px rgb(0,114,217) solid;
+}

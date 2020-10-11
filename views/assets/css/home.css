@@ -37,7 +37,7 @@
 }
 body {
     background-image: url('../img/abstract.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: contain;
     
   }
