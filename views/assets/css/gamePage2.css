@@ -4,7 +4,7 @@ body{
     background-size: contain;
     border-color: black;
     border: black;
-    opacity: 0.9;
+    opacity: 0.92;
 }
 .title h1{
     font-size: 75px;
@@ -90,4 +90,5 @@ hr{
     padding: 2.5%;
     border: 1px  rgb(0,114,217) solid;
     border-radius: 25px;
+    margin-bottom: 2%;
 }
