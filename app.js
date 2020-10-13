@@ -7,20 +7,15 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({extended:true}))
 mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
 
+const e = require("express");
+const games = require("./models/games.js");
 const game = require("./models/games.js"),
       admin = require("./models/admins.js")
       //users = require("./models/users.js")
 
-
-function dataProcessedMongo(err, data){
-    if(err){
-        console.log(err)
-    }else{
-        console.log(data)
-    }
-}
-
 app.use(express.static(__dirname + '/views'));
+//app.use(express.static(__dirname + '/views/assets/css'));
+
 
 app.get("/", function(req,res){
     res.render("index.ejs")
@@ -70,20 +65,38 @@ app.post("/admin/addGame2", function(req,res){
 })
 
 app.get("/home", function(req,res){
-    const car_game = [
-        {img : "https://www.godisageek.com/wp-content/uploads/Doom-Eternal-Key-Art.jpg", desc : "Doom Eternal is a first-person shooter video game developed by id Software and published by Bethesda Softworks."},
-        {img : "https://cdn.mos.cms.futurecdn.net/GSYDS6PSPWPzWm3fFGj5gj-1200-80.jpg", desc: "No Man's Sky is an exploration real-time strategy survival game developed and published by the indie studio Hello Games." },
-        {img : "https://i.ytimg.com/vi/jEp9yyhwZFE/maxresdefault.jpg", desc : "Journey across a magical realm of diverse cultures and kingdoms in the epic title of Genshin Impact."}
-    ]
-    const all_game = [
-        {img : "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-ca/global/game-info/acb_nakedbox_mobile_161339.jpg", title : "Assassins Creed Director's Cut", desc : "Assassin's Creed is an action-adventure video game developed by Ubisoft Montreal and published by Ubisoft."},
-        {img : "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/acrogue_remastered-gameinfo-boxshot_art-ubinew-02-348x434_316967.jpg", title : "Assassin's Creed Rouge", desc : "Assassin's Creed Rogue an adventurous Assassin to a grim Templar willing to hunt down his former brothers."}
-    ]
-    res.render("home.ejs", {car_game: car_game, all_game: all_game})
+    let car_game = [], all_game=[]
+    game.aggregate([{ $sample: { size: 3 } }], function(err,games){
+        if(err){
+            console.log(err)
+        }else{
+            car_game = games
+            game.find({}, function(err, games){
+                if(err){
+                    console.log(err)
+                }else{
+                    all_game = games
+                    res.render("home.ejs", {car_game: car_game, all_game: all_game})
+                }
+            })
+            //res.render(car_game)        
+        }
+    }) 
 })
 
-app.get("/profile/:user", function(req,res){
-    res.send("This will be page for the user") 
+app.get("/game/:gameid", function(req,res){
+    //const gameid = req.params.gameid
+    //res.send(gameid)
+    //console.log(gameid)
+    game.findOne({_id : req.params.gameid},function(err,games){
+        if(err){
+            console.log(err)
+        }else{
+            res.render("game.ejs",{games : games})
+            //console.log(games)
+        }
+    })
+    
 })
 
 app.post("/addFeedback", function(req,res){

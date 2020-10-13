@@ -19,16 +19,15 @@
   
 .carousel-item img {
     position: absolute;
-    object-fit:cover;
+    background-size: contain;
     top: 0;
     left: 0;
-    min-height: 500px;
 }
 
 .card{
     margin-right: 15%;
     background-color:  rgba(0,114,217, 0.425);
-    margin-bottom: 2%;
+    margin-bottom: 20%;
 }
 
 .card-body{
@@ -61,7 +60,8 @@ p{
 .card:hover {
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0px 0px 0px 8px rgba(0,123,255, 0.425);       
+    box-shadow: 0px 0px 0px 8px rgba(0,123,255, 0.425);
+    transform: scale(1.05);     
 }
 .btn:hover {
     background-color: rgba(255, 217, 0, 0.897);
@@ -84,7 +84,7 @@ h3{
     color: rgb(255, 255, 255);   
 }
 .H31{
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     text-align: center;
     font-size: 45px;
     color: rgb(0,123,255);

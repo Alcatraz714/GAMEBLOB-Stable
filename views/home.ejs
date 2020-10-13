@@ -13,21 +13,21 @@
             
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <a href=""><img class="d-block w-100" src="<%= car_game[0].img%>"></a>
+                <a href=""><img class="d-block w-100" src="<%= car_game[0].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[0].desc%></p>
+                    <p><%= car_game[0].desc.split(".")[0] %></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <a href=""><img class="d-block w-100" src="<%= car_game[1].img%>"></a>
+                <a href=""><img class="d-block w-100" src="<%= car_game[1].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[1].desc%></p>
+                    <p><%= car_game[1].desc.split(".")[0]%></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <a href=""><img class="d-block w-100" src="<%= car_game[2].img%>"></a>
+                <a href=""><img class="d-block w-100" src="<%= car_game[2].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[2].desc%></p>
+                    <p><%= car_game[2].desc.split(".")[0]%></p>
                 </div>
             </div> 
             
@@ -47,14 +47,15 @@
         <h3 class="H31" style="font-weight: 800;">Browse Our Store</h3>
         <div class="row">
             <% all_game.forEach(game => { %>
+                <!--% console.log(game._id) %--> 
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="card">
-                        <a href=""><img class="card-img-top" src="<%= game.img%>"></a>
+                        <a href=""><img class="card-img-top" src="<%= game.img.title_img%>"></a>
                         <div class="card-body">
-                            <h5 class="card-title"><%= game.title%> </h5>
+                            <h5 class="card-title"><%= game.name%> </h5>
                             <hr>
-                            <p class="card-text"><%= game.desc%></p>
-                            <a href="#" class="btn btn-primary">More Info</a>
+                            <p class="card-text"><%= game.desc.substr(0,200)+"..."%></p>
+                            <a href="game/<%= game._id%> " class="btn btn-primary">More Info</a>
                         </div>
                     </div>
                 </div>
