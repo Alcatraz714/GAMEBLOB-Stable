@@ -1,12 +1,120 @@
 <%- include("partials/header.ejs") %> 
 
-<% var j = games.img.high_res[0] %> 
+<style>
+    body{
+        background-repeat: repeat;
+        font-family: 'Montserrat', sans-serif;
+        background-size: contain;
+        border-color: black;
+        border: black;
+        opacity: 0.92;
+    }
+    .title h1{
+        font-size: 75px;
+        color: white;
+        text-align: left;
+        margin-bottom: 0%;
+        padding: 10%;
+    }
+
+    .content{
+        border: 2px black solid;
+        display: flex;
+        justify-content: center;
+        margin-left: 5%;
+        width: 90%;
+        background-color: black;
+        color: rgb(0,114,217);
+        border-radius: 10px;
+        margin-bottom: 5%;
+    }
+
+    .content p, .content li{
+        font-weight: 500;
+        margin-bottom: 5%;
+        color: white;
+    }
+
+    .carousel .carousel-item {
+        height: 350px;
+        margin-bottom: 10%;
+    }
+    
+    .carousel-item img {
+        position: absolute;
+        object-fit:cover;
+        top: 0;
+        left: 0;
+        min-height: 500px;
+    }
+
+    h3{
+        margin-top: 10%;
+        margin-bottom: 2.5%;
+    }
+
+    h2{
+        margin-top: 5%;
+    }
+
+    .buyfr{
+        display : flex; 
+        justify-content: space-evenly;
+        margin-bottom: 4%;
+    }
+
+    .dev-details{
+        display : flex; 
+        justify-content: flex-start;
+        margin-bottom: 4%;
+    }
+
+    .dev-details div{
+        margin-right: 10%;
+    }
+
+    .buy{
+        margin-top: 25%;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: rgb(0,114,217);
+        border-color: rgb(0,114,217);
+    }
+
+    hr{
+        border: 0; 
+        height: 1px; 
+        background-color: rgb(0,114,217);
+        opacity: 0.9;
+    }
+
+    .comment-user{
+        padding: 2.5%;
+        border: 1px  rgb(0,114,217) solid;
+        border-radius: 25px;
+        margin-bottom: 2%;
+    }
+
+    footer{
+        margin-top: 5%;
+    }
+
+    .btn-outline-primary{
+        border-color: rgb(0,114,217);
+        color:  rgb(0,114,217);
+    }
+
+</style>
+
+<% var j = games.img.high_res[1] %> 
 
 <body style="background-image: url('<%= j%>');">
-    <link rel="stylesheet" href= "assets/css/game.css" type="text/css">
+    <link rel="stylesheet" href= "assets/css/gametest.css" type="text/css">
     <%- include("partials/nav.ejs") %>
     <div class="title">
-        <h1 style="text-shadow: 5px 5px #000000;"><% games.name%> </h1>
+        <h1 style="text-shadow: 5px 5px #000000;"><%= games.name%> </h1>
     </div>
     <div class="content">
         <div class="container">

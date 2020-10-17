@@ -7,14 +7,13 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({extended:true}))
 mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
 
-const e = require("express");
-const games = require("./models/games.js");
 const game = require("./models/games.js"),
       admin = require("./models/admins.js")
       //users = require("./models/users.js")
 
 app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/views/assets/css'));
+
 
 
 app.get("/", function(req,res){
@@ -84,10 +83,7 @@ app.get("/home", function(req,res){
     }) 
 })
 
-app.get("/game/:gameid", function(req,res){
-    //const gameid = req.params.gameid
-    //res.send(gameid)
-    //console.log(gameid)
+app.get("/home/:gameid", function(req,res){
     game.findOne({_id : req.params.gameid},function(err,games){
         if(err){
             console.log(err)
