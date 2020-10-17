@@ -15,7 +15,6 @@ app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/views/assets/css'));
 
 
-
 app.get("/", function(req,res){
     res.render("index.ejs")
 }) 
@@ -49,9 +48,18 @@ app.get("/admin/addGame", function(req,res){
 app.post("/admin/addGame", function(req,res){
     
     req.body.game.img = req.body.img
+    req.body.game.critic = req.body.critic
     const gameToAdd = req.body.game
-    //console.log(gameToAdd)
-    game.create(gameToAdd, dataProcessedMongo)
+    //console.log(req.body.critic)
+    console.log(gameToAdd)
+    game.create(gameToAdd, function(game, err){
+        if(err){
+            console.log(err)
+        }
+        else{
+            console.log(gameToAdd)
+        }
+    })
     res.redirect("/admin/addGame")
 })
 

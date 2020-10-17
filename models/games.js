@@ -10,6 +10,10 @@ const gameDisplaySchema = new mongoose.Schema({
         }],
         title_img : String
     },
+    critic: {
+        name : String,
+        review: String
+    },
     sys_req : String,
     rating : Number,
     dev : String,

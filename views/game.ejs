@@ -65,12 +65,13 @@
 
     .dev-details{
         display : flex; 
-        justify-content: flex-start;
+        justify-content: space-around;
         margin-bottom: 4%;
     }
 
     .dev-details div{
         margin-right: 10%;
+        margin-top: 0%;
     }
 
     .buy{
@@ -111,7 +112,7 @@
 <% var j = games.img.high_res[1] %> 
 
 <body style="background-image: url('<%= j%>');">
-    <link rel="stylesheet" href= "assets/css/gametest.css" type="text/css">
+    <!--link rel="stylesheet" href= "assets/css/gametest.css" type="text/css"-->
     <%- include("partials/nav.ejs") %>
     <div class="title">
         <h1 style="text-shadow: 5px 5px #000000;"><%= games.name%> </h1>
@@ -153,32 +154,36 @@
             <div class="about">
                 <h2>About the Game:</h2>
                 <p class="desc"><%= games.desc%> </p>
+            </div>
+            <hr>
+            <div>                
+                <h2>Overall Rating:</h2> <p style="font-size: 6em; margin-bottom: 0%; font-weight: 500;"><%= games.rating %>/10</p>
+                <p><em>"<%= games.critic.review%> " - <%= games.critic.name%> </em></p>
+            </div>
+            <hr>
+            <div class="dev-details">
+                <div>
+                    <h3>Publisher: </h3> <p><%= games.dev%> </p>
                 </div>
-                <hr>
-                <div class="dev-details">
-                    <div>
-                        <h3>Publisher : </h3> <p><%= games.dev%> </p>
-                    </div>
-                    <div>
-                        <h3>Developer : </h3> <p><%= games.publisher%></p>
-                    </div>
+                <div>
+                    <h3>Developer: </h3> <p><%= games.publisher%></p>
                 </div>
-                <hr>
-                <div class="req">
+                <div>
+                    <h3>Release Date: </h3> <p><%= games.release%> </p>
+                </div>
+            </div>
+            <hr>
+            <div class="req">
                 <h2 style="margin-bottom: 5%;">System Requirements</h2>
                 <ul class="list" style="margin-bottom: 2.5%;">
-                    <li>CPU: Intel Core i5-3570K or AMD FX-8310</li>
-                    <li>RAM: 8 GB</li>
-                    <li>OS: Windows 7 or later</li>
-                    <li>VIDEO CARD: NVIDIA GeForce GTX 780 or AMD Radeon RX 470</li>
-                    <li>PIXEL SHADER: 5.0</li>
-                    <li>VERTEX SHADER: 5.0</li>
-                    <li>FREE DISK SPACE: 70 GB</li>
-                    <li>DEDICATED VIDEO RAM: 4 GB</li>
+                    <% const sys = games.sys_req.split('$') %>
+                    <% sys.forEach(spec => { %>
+                        <li><%= spec%></li>
+                    <% }) %>  
                 </ul>
-                </div>
-                <hr>
-                <div class="comments">
+            </div>
+            <hr>
+            <div class="comments">
                     <h2>Comments from Users (1):</h2>
                     <br>
                     <div class="comment-user">
@@ -193,7 +198,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary" style="margin-left: 90%;">Submit</button>
                     </form>
-                </div>
+            </div>
         </div>
     </div>
 
