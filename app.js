@@ -100,6 +100,7 @@ app.post("/addFeedback", (req,res) => {
 })
 
 app.get("/home/search", (req,res) => {
+    //console.log(req.query.q)
     res.render("list.ejs")
 })
 
@@ -109,7 +110,7 @@ app.get("*", (req,res) => {
 
 app.use((err, req, res, next) => {
     let { statusCode=500 , message} = err
-    console.log(err.name)
+    //console.log(err)
     if(err.name==="CastError") statusCode=404,message="Page Not Found"
     if(err.name==="TypeError") statusCode=500,message="Something Went Wrong Internally"
     return res.render("error.ejs", {statusCode: statusCode, message: message})
