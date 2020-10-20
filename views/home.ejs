@@ -13,19 +13,19 @@
             
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <a href=""><img class="d-block w-100" src="<%= car_game[0].img.high_res[0]%>"></a>
+                <a href="/game/<%= car_game[0]._id%>"> <img class="d-block w-100" src="<%= car_game[0].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
                     <p><%= car_game[0].desc.split(".")[0] %></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <a href=""><img class="d-block w-100" src="<%= car_game[1].img.high_res[0]%>"></a>
+                <a href="/game/<%= car_game[1]._id%>"><img class="d-block w-100" src="<%= car_game[1].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
                     <p><%= car_game[1].desc.split(".")[0]%></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <a href=""><img class="d-block w-100" src="<%= car_game[2].img.high_res[0]%>"></a>
+                <a href="/game/<%= car_game[2]._id%>"><img class="d-block w-100" src="<%= car_game[2].img.high_res[0]%>"></a>
                 <div class="carousel-caption d-none d-md-block">
                     <p><%= car_game[2].desc.split(".")[0]%></p>
                 </div>
@@ -55,7 +55,7 @@
                             <h5 class="card-title"><%= game.name%> </h5>
                             <hr>
                             <p class="card-text"><%= game.desc.substr(0,200)+"..."%></p>
-                            <a href="home/<%= game._id%> " class="btn btn-primary">More Info</a>
+                            <a href="/game/<%= game.id %> " class="btn btn-primary">More Info</a>
                         </div>
                     </div>
                 </div>

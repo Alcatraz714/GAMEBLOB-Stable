@@ -12,7 +12,6 @@ mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, u
 
 const game = require("./models/games.js"),
       admin = require("./models/admins.js");
-
       //users = require("./models/users.js")
 
       
@@ -69,8 +68,9 @@ app.get("/home", async (req,res) => {
     await game.aggregate([{ $sample: { size: 3 } }], function(err,games){
         if(err){
             console.log(err)
-        }else{
+        }else{ 
             car_game = games
+            //console.log(car_game)
             //res.render(car_game)        
         }
     }) 
@@ -85,8 +85,9 @@ app.get("/home", async (req,res) => {
     res.render("home.ejs", {car_game: car_game, all_game: all_game})
 })
 
-app.get("/home/:gameid", CatchAsync(async (req,res,next) => {
+app.get("/game/:gameid", CatchAsync(async (req,res,next) => {
         const games = await game.findOne({_id : req.params.gameid})
+        const gameid = await games.id
         if(!games){
             return next(new ExpressError("Page not found", 404))
         }
@@ -107,9 +108,11 @@ app.get("*", (req,res) => {
 })
 
 app.use((err, req, res, next) => {
-    const { statusCode , message} = err
-    //console.log(err.name)
-    res.status(statusCode).send(message)
+    let { statusCode=500 , message} = err
+    console.log(err.name)
+    if(err.name==="CastError") statusCode=404,message="Page Not Found"
+    if(err.name==="TypeError") statusCode=500,message="Something Went Wrong Internally"
+    return res.render("error.ejs", {statusCode: statusCode, message: message})
 })
 
 app.listen(3000, () => {

@@ -1,0 +1,15 @@
+<%- include("partials/header.ejs") %> 
+
+<body>
+    <link type="text/css" rel="stylesheet" href="/assets/css/404.css">
+    <%- include("partials/nav.ejs") %> 
+    <div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>Oops!</h1>
+				<h2><%= statusCode%>  - <%= message%> </h2>
+			</div>
+			<a href="./">Go To Homepage</a>
+		</div>
+	</div>
+</body>
