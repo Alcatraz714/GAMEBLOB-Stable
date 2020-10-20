@@ -99,7 +99,8 @@ app.post("/addFeedback", (req,res) => {
     res.redirect("/")
 })
 
-app.get("/home/search", (req,res) => {
+app.get("/home/search", async (req,res) => {
+    const query = res.query.q
     //console.log(req.query.q)
     res.render("list.ejs")
 })
