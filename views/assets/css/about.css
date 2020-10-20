@@ -1,0 +1,28 @@
+.title{
+    background-color: black;
+    text-align: center;
+    padding: 5%;
+    width: 100%;
+    opacity: 0.9;
+    color: white;
+}
+
+.content{
+    background-color: rgb(25, 95, 226);
+}
+
+.dev img{
+    height: 200px;
+    width: 200px;
+}
+
+
+.dev1 img {
+    float: left;
+}
+
+
+
+.dev2 img {
+    float: right;
+}

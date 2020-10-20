@@ -23,6 +23,7 @@ body{
     background-color: black;
     color: rgb(0,114,217);
     border-radius: 10px;
+    margin-bottom: 5%;
 }
 
 .content p, .content li{
@@ -35,7 +36,7 @@ body{
     height: 350px;
     margin-bottom: 10%;
 }
-  
+
 .carousel-item img {
     position: absolute;
     object-fit:cover;
@@ -44,7 +45,7 @@ body{
     min-height: 500px;
 }
 
-h3{
+.buyfr div h3{
     margin-top: 10%;
     margin-bottom: 2.5%;
 }
@@ -67,6 +68,7 @@ h2{
 
 .dev-details div{
     margin-right: 10%;
+    margin-top: 0%;
 }
 
 .buy{
@@ -91,4 +93,13 @@ hr{
     border: 1px  rgb(0,114,217) solid;
     border-radius: 25px;
     margin-bottom: 2%;
+}
+
+footer{
+    margin-top: 5%;
+}
+
+.btn-outline-primary{
+    border-color: rgb(0,114,217);
+    color:  rgb(0,114,217);
 }

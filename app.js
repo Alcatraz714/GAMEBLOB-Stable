@@ -107,6 +107,10 @@ app.get("/home/search", CatchAsync(async (req,res, next) => {
     res.render("list.ejs", {query : q, games: games})
 }))
 
+/*app.get("/about", (req, res) => {
+    res.render("about.ejs")
+})*/
+
 app.get("*", (req,res) => {
     res.render("error.ejs", {statusCode: 404, message: "Page Not Found"})
 })

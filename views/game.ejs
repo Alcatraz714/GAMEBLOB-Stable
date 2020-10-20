@@ -1,114 +1,6 @@
 <%- include("partials/header.ejs") %> 
 
-<style>
-    body{
-        background-repeat: repeat;
-        font-family: 'Montserrat', sans-serif;
-        background-size: contain;
-        border-color: black;
-        border: black;
-        opacity: 0.92;
-    }
-    .title h1{
-        font-size: 75px;
-        color: white;
-        text-align: left;
-        margin-bottom: 0%;
-        padding: 10%;
-    }
-
-    .content{
-        border: 2px black solid;
-        display: flex;
-        justify-content: center;
-        margin-left: 5%;
-        width: 90%;
-        background-color: black;
-        color: rgb(0,114,217);
-        border-radius: 10px;
-        margin-bottom: 5%;
-    }
-
-    .content p, .content li{
-        font-weight: 500;
-        margin-bottom: 5%;
-        color: white;
-    }
-
-    .carousel .carousel-item {
-        height: 350px;
-        margin-bottom: 10%;
-    }
-    
-    .carousel-item img {
-        position: absolute;
-        object-fit:cover;
-        top: 0;
-        left: 0;
-        min-height: 500px;
-    }
-
-    h3{
-        margin-top: 10%;
-        margin-bottom: 2.5%;
-    }
-
-    h2{
-        margin-top: 5%;
-    }
-
-    .buyfr{
-        display : flex; 
-        justify-content: space-evenly;
-        margin-bottom: 4%;
-    }
-
-    .dev-details{
-        display : flex; 
-        justify-content: space-around;
-        margin-bottom: 4%;
-    }
-
-    .dev-details div{
-        margin-right: 10%;
-        margin-top: 0%;
-    }
-
-    .buy{
-        margin-top: 25%;
-    }
-
-    .btn-primary {
-        color: #fff;
-        background-color: rgb(0,114,217);
-        border-color: rgb(0,114,217);
-    }
-
-    hr{
-        border: 0; 
-        height: 1px; 
-        background-color: rgb(0,114,217);
-        opacity: 0.9;
-    }
-
-    .comment-user{
-        padding: 2.5%;
-        border: 1px  rgb(0,114,217) solid;
-        border-radius: 25px;
-        margin-bottom: 2%;
-    }
-
-    footer{
-        margin-top: 5%;
-    }
-
-    .btn-outline-primary{
-        border-color: rgb(0,114,217);
-        color:  rgb(0,114,217);
-    }
-
-</style>
-
+<link rel="stylesheet" href="/assets/css/game.css">
 <% var j = games.img.high_res[1] %> 
 
 <body style="background-image: url('<%= j%>');">
@@ -161,15 +53,15 @@
                 <p><em>"<%= games.critic.review%> " - <%= games.critic.name%> </em></p>
             </div>
             <hr>
-            <div class="dev-details">
-                <div>
+            <div class="dev-details row" style="margin-left: 5%;">
+                <div class="col-sm-12">
                     <h3>Publisher: </h3> <p><%= games.dev%> </p>
                 </div>
-                <div>
+                <div class="col-sm-12">
                     <h3>Developer: </h3> <p><%= games.publisher%></p>
                 </div>
-                <div>
-                    <h3>Release Date: </h3> <p><%= games.release%> </p>
+                <div class="col-sm-12">
+                    <h3>Release Date: </h3> <p><%= games.release%></p>
                 </div>
             </div>
             <hr>
