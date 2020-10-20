@@ -5,32 +5,30 @@
     <div class="main">
         <div class="container">
             <div class="search-term">
-                <h1>Search for 'Assassin's'</h1>
+                <h1>Search for '<%= query%> '</h1>
             </div>
             <hr>
             <div class="results">
+                <% let j=games.length %>
+                    <% if(j==0){ %>
+                        <h1 style="margin-left: 5%; margin-top: 5%;">No Results Found!</h1>
+                    <% }  %>
                 <ul style="list-style-type:none;">
-                    <li>
+                    <% games.forEach((game, i=0)=> { %>
                         <div class="query">
-                            <img src="https://cdn-products.eneba.com/resized-products/HLoyaNQ_350x200_1x-0.jpg" alt="">
+                            <img src="<%=  game.img.title_img%> " alt="<%= game.name%>">
                             
-                            <h3><span>1.</span> <a href="#">Assassin's Creed Revolution</a></h3>
+                            <h3><span><%=  i+1%>.</span> <a href="/game/<%= game.id%>"> <%= game.name%></a></h3>
                             
-                            <p>Assassin's Creed is an action-adventure video game developed by Ubisoft Montreal and published by Ubisoft. It is the first installment in the Assassin's Creed series. The game was released for PlayStation 3 and Xbox 360 in November 2007 and was made available on Microsoft Windows in April 2008. Also, the game can be played on Xbox One consoles via backward compatibility.</p>
+                            <p><%= game.desc%></p>
                             
                         </div>
-                    </li>
+                        <% i = i+1 %> 
+                    <% }) %> 
                     <li>
-                        <div class="query">
-                            <img src="https://cdn-products.eneba.com/resized-products/HLoyaNQ_350x200_1x-0.jpg" alt="">
-                            
-                            <h3><span>2.</span> <a href="#">Assassin's Creed Revolution</a></h3>
-                            
-                            <p>Assassin's Creed is an action-adventure video game developed by Ubisoft Montreal and published by Ubisoft. It is the first installment in the Assassin's Creed series. The game was released for PlayStation 3 and Xbox 360 in November 2007 and was made available on Microsoft Windows in April 2008. Also, the game can be played on Xbox One consoles via backward compatibility.</p>
-                            
-                        </div>
+                        
                     </li>
-                </ol>
+                </ul>
             </div>
         </div>
     </div>

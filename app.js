@@ -99,11 +99,13 @@ app.post("/addFeedback", (req,res) => {
     res.redirect("/")
 })
 
-app.get("/home/search", async (req,res) => {
-    const query = res.query.q
-    //console.log(req.query.q)
-    res.render("list.ejs")
-})
+app.get("/home/search", CatchAsync(async (req,res, next) => {
+    const q = req.query.q
+    const query = new RegExp(q,"i")
+    const games = await game.find({name : {$in : query}})
+    //console.log(games)
+    res.render("list.ejs", {query : q, games: games})
+}))
 
 app.get("*", (req,res) => {
     res.render("error.ejs", {statusCode: 404, message: "Page Not Found"})
@@ -111,7 +113,7 @@ app.get("*", (req,res) => {
 
 app.use((err, req, res, next) => {
     let { statusCode=500 , message} = err
-    //console.log(err)
+    console.log(err)
     if(err.name==="CastError") statusCode=404,message="Page Not Found"
     if(err.name==="TypeError") statusCode=500,message="Something Went Wrong Internally"
     return res.render("error.ejs", {statusCode: statusCode, message: message})
