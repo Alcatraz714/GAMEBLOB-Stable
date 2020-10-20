@@ -8,7 +8,8 @@ const gameDisplaySchema = new mongoose.Schema({
         high_res:[{
             type: String
         }],
-        title_img : String
+        title_img : String,
+        logo : String
     },
     critic: {
         name : String,
