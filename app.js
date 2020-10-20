@@ -100,11 +100,11 @@ app.post("/addFeedback", (req,res) => {
 })
 
 app.get("/home/search", (req,res) => {
-    res.send("This will be the search page") 
+    res.render("list.ejs")
 })
 
 app.get("*", (req,res) => {
-    res.send("This page does not exist")
+    res.render("error.ejs", {statusCode: 404, message: "Page Not Found"})
 })
 
 app.use((err, req, res, next) => {
