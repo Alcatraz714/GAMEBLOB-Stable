@@ -1,0 +1,60 @@
+body{
+    background:url("https://free4kwallpapers.com/uploads/originals/2019/09/06/blue-stripes-wallpaper.jpg");
+    margin:none;
+    font-family: 'Montserrat', sans-serif;
+}
+.hello{
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 10px;
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    text-shadow: 2px 2px black;
+    font-size: 30px;
+    
+}
+.recentB{
+    background-color: rgba(20,20,20,0.95);
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 10px;
+    color: rgb(3, 0, 184);
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.recentR{
+    background-color: rgba(20,20,20,0.9);
+    text-align: left;
+    padding: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(0, 11, 161);
+}
+.thumb{
+    height: 150px;
+    width: 250px;
+    float: right;
+}
+a{
+    font-weight: 700;
+    font-size: 25px;
+}
+.head1{
+    background-color: rgba(20,20,20,0.9);
+    text-align: center;
+    color: white;
+    margin-right:30% ;
+    margin-left: 30%;
+}
+h2{
+    font-size: 35px;
+}
+li{
+    font-size: 35px;
+}
+.box{
+    background-color: rgba(20,20,20,0.9);
+}

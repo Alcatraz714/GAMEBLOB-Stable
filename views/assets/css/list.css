@@ -4,7 +4,9 @@ body{
     width: 100%;
     margin-top: 5%;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(0, 0, 0);
+    background:url("https://www.pixel4k.com/wp-content/uploads/2018/10/dark-abstract-blur-4k_1539371556.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: rgb(0,114,217);
 }
 
@@ -15,8 +17,8 @@ body{
 
 hr{
     border: 0; 
-    height: 1px; 
-    background-color: rgb(0,114,217);
+    height: 2px; 
+    background-color: rgba(0, 3, 199, 0.9);
     opacity: 1;
 }
 
@@ -28,6 +30,8 @@ hr{
 
 .results{
     color: white;
+    background-color: rgba(0, 0, 0, 0.808);
+    border-radius: 10px;
 }
 
 li{
@@ -40,4 +44,11 @@ li{
     height: 250px;
     width: 200px;
     margin: 1%;
+}
+.mid{
+    border: 2px solid rgba(0, 3, 199, 0.9);
+    background-color: black;
+}
+h1{
+    text-shadow: 5px 5px black;
 }
