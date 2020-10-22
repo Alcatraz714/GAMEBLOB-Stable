@@ -4,17 +4,27 @@ const express = require("express"),
       mongoose = require("mongoose"),
       morgan = require("morgan"),
       CatchAsync = require("./views/assets/js/CatchAsync.js"),
-      ExpressError = require("./views/assets/js/ExpressError.js");
+      ExpressError = require("./views/assets/js/ExpressError.js"),
+      joi = require('joi');
     
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(morgan('dev'))
 mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
 
+const { gameSchema } = require("./models/validate.js")
 const game = require("./models/games.js"),
       admin = require("./models/admins.js");
       //users = require("./models/users.js")
 
-      
+const validateSchema = (req, res, next) => {
+    const result = gameSchema.validate(req.body,{stripUnknown: { objects: true } })
+    if(result.error){
+        let msg = JSON.stringify(result.error.details[0])
+        //console.log(msg)
+        return next(new ExpressError(msg, 400))
+    }
+    next()
+}      
 
 app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/views/assets/css'));
@@ -50,8 +60,7 @@ app.get("/admin/addGame", (req,res) => {
     res.render("addGame.ejs")
 })
 
-app.post("/admin/addGame", CatchAsync(async (req,res,next) => {
-    
+app.post("/admin/addGame",validateSchema,  CatchAsync(async (req,res,next) => {
     req.body.game.img = req.body.img
     req.body.game.critic = req.body.critic
     const gameToAdd = req.body.game
@@ -65,23 +74,8 @@ app.post("/admin/addGame", CatchAsync(async (req,res,next) => {
 
 app.get("/home", async (req,res) => {
     let car_game = [], all_game=[]
-    await game.aggregate([{ $sample: { size: 3 } }], function(err,games){
-        if(err){
-            console.log(err)
-        }else{ 
-            car_game = games
-            //console.log(car_game)
-            //res.render(car_game)        
-        }
-    }) 
-    await game.find({}, (err, games) => {
-        if(err){
-            console.log(err)
-        }else{
-            all_game = games
-            
-        }
-    })
+    car_game =await game.aggregate([{ $sample: { size: 3 } }]) 
+    all_game = await game.find({})
     res.render("home.ejs", {car_game: car_game, all_game: all_game})
 })
 
