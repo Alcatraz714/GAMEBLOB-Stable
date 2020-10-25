@@ -5,30 +5,46 @@ const express = require("express"),
       morgan = require("morgan"),
       CatchAsync = require("./views/assets/js/CatchAsync.js"),
       ExpressError = require("./views/assets/js/ExpressError.js"),
-      joi = require('joi');
+      session = require("express-session"),
+      passport = require("passport"),
+      LocalStratergy = require("passport-local")
     
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(morgan('dev'))
-mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true});
+const adminRoute = require('./routes/admin.js'),
+      homeRoute = require("./routes/home.js"),
+      userRoute = require("./routes/user.js")
 
-const { gameSchema } = require("./models/validate.js")
-const game = require("./models/games.js"),
-      admin = require("./models/admins.js");
-      //users = require("./models/users.js")
-
-const validateSchema = (req, res, next) => {
-    const result = gameSchema.validate(req.body,{stripUnknown: { objects: true } })
-    if(result.error){
-        let msg = JSON.stringify(result.error.details[0])
-        //console.log(msg)
-        return next(new ExpressError(msg, 400))
+const sessionConfig = {
+    secret : "gameblobisawesome",
+    resave : false,
+    saveUninitialized : true,
+    cookie : {
+        httpOnly : true,
+        expire : Date.now() +  8.64e+7 * 7,
+        maxAge : 8.64e+7 * 7
     }
-    next()
-}      
+}
+
+app.use(session(sessionConfig))
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(morgan('tiny'))
+app.use(passport.initialize())
+app.use(passport.session())
+
+mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true});
+
+const game = require("./models/games.js"),
+      user = require("./models/users.js")
+
+passport.use(new LocalStratergy(user.authenticate()))
+passport.serializeUser(user.serializeUser())
+passport.deserializeUser(user.deserializeUser())
 
 app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/views/assets/css'));
 
+app.use("/admin", adminRoute);
+app.use("/home", homeRoute);
+app.use("/", userRoute)
 
 app.get("/", (req,res) => {
     res.render("index.ejs")
@@ -36,47 +52,6 @@ app.get("/", (req,res) => {
 
 app.get("/login", (req,res) => {
     res.render("login.ejs")
-})
-
-app.get("/admin", (req,res) => {
-    res.render("admin.ejs")
-})
-
-app.post("/admin", async (req,res) => {
-    const user1 = req.body.admin.user;
-    const pass = req.body.admin.pass;
-    await admin.findOne({user : user1}, (err, user) => {
-        const real_pass = user.password
-        console.log(real_pass)
-        if(pass===real_pass){
-            res.redirect("/admin/addGame")
-        }else{
-            res.redirect("/admin")
-        }
-    })
-})
-
-app.get("/admin/addGame", (req,res) => {
-    res.render("addGame.ejs")
-})
-
-app.post("/admin/addGame",validateSchema,  CatchAsync(async (req,res,next) => {
-    req.body.game.img = req.body.img
-    req.body.game.critic = req.body.critic
-    const gameToAdd = req.body.game
-    //console.log(req.body.critic)
-    //console.log(gameToAdd)
-    await game.create(gameToAdd, (game, err) => {
-        res.redirect("/admin/addGame")
-    })
-    
-}))
-
-app.get("/home", async (req,res) => {
-    let car_game = [], all_game=[]
-    car_game =await game.aggregate([{ $sample: { size: 3 } }]) 
-    all_game = await game.find({})
-    res.render("home.ejs", {car_game: car_game, all_game: all_game})
 })
 
 app.get("/game/:gameid", CatchAsync(async (req,res,next) => {
@@ -93,17 +68,6 @@ app.post("/addFeedback", (req,res) => {
     res.redirect("/")
 })
 
-app.get("/home/search", CatchAsync(async (req,res, next) => {
-    const q = req.query.q
-    const query = new RegExp(q,"i")
-    const games = await game.find({name : {$in : query}})
-    //console.log(games)
-    res.render("list.ejs", {query : q, games: games})
-}))
-
-/*app.get("/about", (req, res) => {
-    res.render("about.ejs")
-})*/
 
 app.get("*", (req,res) => {
     res.render("error.ejs", {statusCode: 404, message: "Page Not Found"})
@@ -111,7 +75,7 @@ app.get("*", (req,res) => {
 
 app.use((err, req, res, next) => {
     let { statusCode=500 , message} = err
-    console.log(err)
+    //console.log(err)
     if(err.name==="CastError") statusCode=404,message="Page Not Found"
     if(err.name==="TypeError") statusCode=500,message="Something Went Wrong Internally"
     return res.render("error.ejs", {statusCode: statusCode, message: message})

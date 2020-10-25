@@ -11,7 +11,7 @@
                     <br>
                     <div class="form-group">
                       <label for="formGroupExampleInput">Username</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example@Username">
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Password</label>
@@ -25,62 +25,66 @@
                   </form>
             </div>
             <div class="signup">
-                <form>
-                    <h1 style="font-weight: 800;">Register</h1>
-                    <hr>
-                    <br>
-                    <div class="form-group row">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email@Example">
-                      </div>
+              <h1 style="font-weight: 800;">Register</h1>
+              <hr>
+              <form class="needs-validation" action="/register" method="POST" novalidate>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="user[username]" placeholder="Username" required minlength="6" maxlength="16">
+                    <div class="valid-feedback">
+                      Looks good!
                     </div>
-                    <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      </div>
+                    <div class="invalid-feedback">
+                      Username must be in range of 6-16
                     </div>
-                    <fieldset class="form-group">
-                      <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-                        <div class="col-sm-10">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                              Male
-                            </label><br>
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                              Female
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                    <div class="form-group row">
-                      <label for="example-date-input" class="col-2 col-form-label">DOB</label>
-                      <div class="col-10">
-                      <input class="form-control" type="date" value="YYYY-MM-DD" id="example-date-input">
-                      </div>
-                      </div>
-                    <div class="form-group row">
-                      <div class="col-sm-2"></div>
-                      <div class="col-sm-10">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
-                            You Accept our terms and conditions
-                          </label>
-                        </div>
-                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="user[password]" placeholder="Password" required>
+                    <div class="valid-feedback">
+                      Looks good!
                     </div>
-                    <div class="form-group row">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                      </div>
+                    <div class="invalid-feedback">
+                      <p>Password must contain: Uppercase character, Lowercase character, Symbol, a Number, range 6-24</p>
                     </div>
-                  </form>
+                  </div>
+                  <div class="form-group">
+                    <label for="validationCustom02">Email</label>
+                    <input type="email" class="form-control" id="validationCustom02" name="user[email]" placeholder="email@email.com" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Invalid email
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="validationCustom04">Date of Birth</label>
+                    <input type="date" class="form-control" id="validationCustom04" name="user[dob]" placeholder="DOB" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Pick a DOB
+                    </div>
+                  </div>
+                
+                
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+              </form>
+              
+              <script src="assets/js/validation.js"></script>
             </div>
 
         </div>
