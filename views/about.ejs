@@ -1,24 +1,71 @@
 <%- include("partials/header.ejs") %> 
-<body>
-    <link rel="stylesheet" href="/assets/css/about.css">
-    <div class="title">
-        <h2>The Team Behind</h2>
-        <h1>GameBlob</h1>
-    </div>
-    <div class="content">
-        <div class="dev dev1">
-            <img src="assets/img/test.jpg" alt="">
-            
-            <h2>Mihir Gupte</h2>
-            <p class="desc">Cool guy op shizzz</p>
+	<body>
+        <link rel="stylesheet" href="/assets/css/about.css" />
+        <%- include("partials/nav.ejs") %> 
+			<section id="banner">
+				<h1>About GameBlob and the Team</h1>
+				<p>THE BEST OF GAMING AT ONE PLACE.</p>
+			</section>
 
-        </div>
-        <div class="dev dev2">
-            <img src="assets/img/test.jpg" alt="">
+		
+			<section id="one" class="wrapper">
+				<div class="inner">
+					<div class="flex flex-3">
+						<article>
+							<header>
+								<h3>The Color Scheme<br /> and Why ?</h3>
+							</header>
+							<p>We decided on this color scheme for a better contrast between the content and the background while making the page look minimial.</p>
+							
+						</article>
+						<article>
+							<header>
+								<h3>The Style<br /> Inspiration from Origin</h3>
+							</header>
+							<p>The interface was actually designed with Origin in mind which was the best in our search for inspiration for the design and interface.</p>
+							
+						</article>
+						<article>
+							<header>
+								<h3>The Work and<br /> The Future...</h3>
+							</header>
+							<p>This is not the end and we will keep working on this project for future deployment and face the competetion.</p>
+							
+						</article>
+					</div>
+				</div>
+			</section>
+
+		
+			<section id="two" class="wrapper style1 special">
+				<div class="inner">
+					<header>
+						<h2>The Team</h2>
+						<p>The Minds behind the Project</p>
+					</header>
+					<div class="flex flex-4">
+						<div class="box person">
+							<div class="image round">
+								<img src="https://64.media.tumblr.com/3725e9552b7d6d6fffee4da80f683567/tumblr_peg6sb6fxJ1tfhxzto2_250.jpg" alt="Person 1" />
+							</div>
+							<h3>Rishi Saxena</h3>
+							<p>Designer<br /><hr> The Guy who tried everything but chose the best. The UI Developer and the Database handler</p>
+						</div>
+						<div class="box person">
+							<div class="image round">
+								<img src="https://64.media.tumblr.com/e1e3410d27c5dbbd18144a03cbf3910f/tumblr_p5zupretzj1tfhxzto7_500.png" alt="Person 2" />
+							</div>
+							<h3>Mihir Gupte</h3>
+							<p>Developer<br /><hr> The brains and the developer for the backend making even the mistakes into a feature, and giving finishing touches to the design.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+            <script src="assets/js/about.js"></script>
             
-            <h2>Rishi Saxena</h2>
-            <p class="desc">wEEB LOLI</p>
-            
-        </div>
-    </div>
-</body>
+            <%- include("partials/footer.ejs") %> 

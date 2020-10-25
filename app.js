@@ -7,7 +7,8 @@ const express = require("express"),
       ExpressError = require("./views/assets/js/ExpressError.js"),
       session = require("express-session"),
       passport = require("passport"),
-      LocalStratergy = require("passport-local")
+      LocalStratergy = require("passport-local"),
+      flash = require("connect-flash")
     
 const adminRoute = require('./routes/admin.js'),
       homeRoute = require("./routes/home.js"),
@@ -50,9 +51,6 @@ app.get("/", (req,res) => {
     res.render("index.ejs")
 }) 
 
-app.get("/login", (req,res) => {
-    res.render("login.ejs")
-})
 
 app.get("/game/:gameid", CatchAsync(async (req,res,next) => {
         const games = await game.findOne({_id : req.params.gameid})
