@@ -11,7 +11,14 @@ const userSchema = new mongoose.Schema({
     dob : {
         type : Date,
         required : true,
-    }
+    },
+    role : {
+        type : String,
+        default : "user"
+    },
+    ownedGames : [{
+        gameid : mongoose.Schema.Types.ObjectId
+    }]
 })
 
 userSchema.plugin(passportLocalMongoose)

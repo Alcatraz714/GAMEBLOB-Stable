@@ -1,9 +1,27 @@
 const express = require('express')
 const router = express.Router()
+const passport = require('passport')
+const LocalStratergy = require("passport-local")
 const CatchAsync = require("../views/assets/js/CatchAsync.js"),
       ExpressError = require("../views/assets/js/ExpressError.js")
 const { gameSchema } = require("../models/validate.js"),
-        admin = require("../models/admins.js");
+        user = require("../models/users.js"),
+        game = require("../models/games.js"),
+        feedback = require("../models/feedback.js")
+const roles = require("../views/assets/js/roles.js")
+const isLoggedIn = (req, res, next) => {
+    if(!req.isAuthenticated()){
+        req.flash('error', 'You must be logged in to access this feature!')
+        return res.redirect("/admin")
+    }
+    //console.log(req.user)
+    if(req.user.role != roles.admin){
+        req.flash('error', 'You must be an admin access this feature!')
+        return res.redirect("/admin")
+    }
+    next();
+}
+
 
 const validateSchema = (req, res, next) => {
     const result = gameSchema.validate(req.body,{stripUnknown: { objects: true } })
@@ -19,27 +37,32 @@ router.get("/", (req,res) => {
     res.render("admin.ejs")
 })
 
-router.post("/", CatchAsync(async (req,res) => {
-    const user1 = req.body.admin.user;
-    const pass = req.body.admin.pass;
-    const pass_real = await admin.findOne({user : user1}).password
-    if(pass==="abc"){
-        res.redirect("/admin/addGame")
-    }else{
-        res.redirect("/")
-    }
+router.post("/",passport.authenticate('local', {failureRedirect : "/admin"}), CatchAsync(async (req,res) => {
+    res.redirect("/admin/home")
 }))
 
-router.get("/addGame", (req,res) => {
+router.get("/home",isLoggedIn, (req,res)=>{
+    res.render("adminHome.ejs")
+})
+
+router.get("/addGame",isLoggedIn, (req,res) => {
     res.render("addGame.ejs")
+})
+
+router.get("/feedback", isLoggedIn, async (req,res)=>{
+    const feedbacks = await feedback.find({})
+    res.render("feedback.ejs", {feedback : feedbacks})
+})
+
+router.get("/logout", (req,res) => {
+    req.logout()
+    res.redirect("/admin")
 })
 
 router.post("/addGame",validateSchema,  CatchAsync(async (req,res,next) => {
     req.body.game.img = req.body.img
     req.body.game.critic = req.body.critic
     const gameToAdd = req.body.game
-    //console.log(req.body.critic)
-    //console.log(gameToAdd)
     await game.create(gameToAdd, (game, err) => {
         res.redirect("/admin/addGame")
     })

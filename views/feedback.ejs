@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h1>User feedback:</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone No.</th>
+            <th>Message</th>
+        </tr>
+        <% feedback.forEach(fd =>{ %>
+            <tr>
+                <td><%= fd.name %></td>
+                <td><%= fd.email %></td>
+                <td><%= fd.phone %></td>
+                <td><%= fd.message %></td>
+            </tr>
+        <% }) %> 
+    </table>
+</body>
+</html>

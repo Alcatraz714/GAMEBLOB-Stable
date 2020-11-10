@@ -103,3 +103,7 @@ footer{
     border-color: rgb(0,114,217);
     color:  rgb(0,114,217);
 }
+
+h1,h2,h3{
+    font-weight: 800;
+}

@@ -40,7 +40,7 @@
             </div>
             <div class="buyfr">
                 <div><h3>Now Available for Purchase:</h3></div>
-                <div><a class="btn btn-outline-success buy" href="#" role="button">Buy for ₹ <%= games.price%></a></div>
+                <div><a class="btn btn-outline-success buy" href="#" role="button">Buy for ₹ <span id="price"><%= games.price%></span></a></div>
             </div>
             <hr>
             <div class="about">
@@ -76,22 +76,30 @@
             </div>
             <hr>
             <div class="comments">
-                    <h2>Comments from Users (1):</h2>
+                    <h2>Comments from Users (<%= count %>):</h2>
+                    <% if(count===0){ %>
+                        <br>
+                        <h4 style="margin-left:10%">Be the first one to leave a comment!</h4>
+                    <% } %> 
                     <br>
-                    <div class="comment-user">
-                        <h4>Luminous says:</h4>
-                        <p>Amazing Game , with stunning graphics and gameplay.</p>
-                    </div>
+                    <% comments.forEach(comment => { %>
+                        <div class="comment-user">
+                            <h4><%= comment.user.username%> says:</h4>
+                            <p><%= comment.text%></p>
+                        </div>
+                    <% }); %> 
                     <hr>
-                    <form action="" method="POST" class="comment-form">
+                    <form action="/comments" method="POST" class="comment-form">
                         <h3 style="margin-top:5%;">Leave a Comment:</h3>
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name="comment[text]" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="margin-left: 90%;">Submit</button>
+                        <button type="submit" class="btn btn-primary float-right" style="margin-bottom: 2%;">Submit</button>
                     </form>
             </div>
         </div>
     </div>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="/assets/js/checkout.js"></script>
 <%- include("partials/footer.ejs") %> 

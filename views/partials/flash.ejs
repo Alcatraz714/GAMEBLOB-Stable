@@ -1,0 +1,39 @@
+<% if(success && success.length){ %> 
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= success %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<style>
+    .alert-success{
+        margin-top: 10%;
+    }
+    .h3text{
+        margin-top: 7.5%;
+    }
+</style>
+
+<% } %> 
+
+<% if(error && error.length){ %> 
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <style>
+        .alert-danger{
+            margin-top: 5%;
+            width: 75%;
+            margin-left: 12.5%;
+        }
+        .main{
+            margin-top: 5%;
+        }
+    </style>
+    
+<% } %> 
