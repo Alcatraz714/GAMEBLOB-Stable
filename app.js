@@ -112,9 +112,10 @@ app.post("/comments", isLoggedin, CatchAsync(async (req, res)=>{
 
 app.get("/user/:user",isLoggedIn, async (req,res)=>{
     req.session.return = req.originalUrl
+    const uname = req.user.username
     const comments = await comment.find({user : req.user.id}).populate('game').populate('user','username').sort({$natural:-1}).limit(3)
     //console.log(comments)
-    res.render("profile.ejs",{comments:comments})
+    res.render("profile.ejs",{comments:comments, uname:uname})
 })
 
 app.post("/razorpay", async (req,res)=> {

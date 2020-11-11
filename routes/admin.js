@@ -37,7 +37,7 @@ router.get("/", (req,res) => {
     res.render("admin.ejs")
 })
 
-router.post("/",passport.authenticate('local', {failureRedirect : "/admin"}), CatchAsync(async (req,res) => {
+router.post("/",passport.authenticate('local', {failureRedirect : "/admin", failureFlash:"Username or password incorrect"}), CatchAsync(async (req,res) => {
     res.redirect("/admin/home")
 }))
 
