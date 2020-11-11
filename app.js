@@ -58,7 +58,8 @@ mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, u
 const game = require("./models/games.js"),
       user = require("./models/users.js"),
       comment = require("./models/comments.js"),
-      feedback = require("./models/feedback.js")
+      feedback = require("./models/feedback.js"),
+      purchase = require("./models/purchased.js")
 const isLoggedIn = require("./views/assets/js/checkLogin.js")
 const { response } = require("express")
 const { compile } = require("joi")
@@ -113,14 +114,17 @@ app.post("/comments", isLoggedin, CatchAsync(async (req, res)=>{
 app.get("/user/:user",isLoggedIn, async (req,res)=>{
     req.session.return = req.originalUrl
     const uname = req.user.username
+    const purchased = await purchase.find({user:req.user.userid}).populate('gameid')
+    console.log(purchased)
     const comments = await comment.find({user : req.user.id}).populate('game').populate('user','username').sort({$natural:-1}).limit(3)
     //console.log(comments)
-    res.render("profile.ejs",{comments:comments, uname:uname})
+    res.render("profile.ejs",{comments:comments, uname:uname, purchased : purchased})
 })
 
 app.post("/razorpay", async (req,res)=> {
-    const gid = req.session.gameid
+    
     try{
+        const gid = req.session.gameid
         const amount = 499,currency='INR',payment_capture=true; 
         const obj = {
             amount : (amount*100).toString(), 
@@ -135,13 +139,24 @@ app.post("/razorpay", async (req,res)=> {
         res.json({
             amount : order.amount,
             currency : order.currency,
-            id : order.id
+            id : order.id,
+            gid : gid
         })
         
     }catch(err){
         console.log(err)
     }
     
+})
+
+app.post("/razorpay/success", async (req,res)=>{
+    const gid = req.session.gameid
+    const obj = {
+        gameid : gid,
+        userid : req.user.id
+    }
+    await purchase.create(obj)
+    res.redirect(req.session.return)
 })
 
 app.get("*", (req,res) => {

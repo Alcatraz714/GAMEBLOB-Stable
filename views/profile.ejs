@@ -9,16 +9,19 @@
         <div class="games">
             <h1>Recently Bought Games:</h1>
             <ol style="list-style-type:none;">
-                <li>
-                    <div class="query">
-                        <a href="/game/5f8efcfc7269620b2063f0dd"><img src="https://cdn-products.eneba.com/resized-products/BjwMz8G_350x200_1x-0.jpg " alt="Assassin's Creed: Brotherhood"></a>
-                        
-                        <h2>1. <a href="/game/5f8efcfc7269620b2063f0dd">Assassin's Creed: Brotherhood</a></h2>
-                        
-                        <p>The plot follows the centuries-old struggle between the Assassins, who fight for peace with free will, and the Templars, who desire the same but through control. The framing story is set in the 21st century and features series protagonist Desmond Miles who, with the aid of a machine known as the Animus, relives the memories of his ancestors to find a way to avert the 2012 apocalypse. The main story takes place immediately after the plot of Assassin's Creed II, featuring Assassin Ezio Auditore da Firenze in 16th century Italy and his quest to restore the Assassin order, and destroy his enemies: the Borgia family.</p>
-                    </div>
-                    
-                </li>
+                <% let j=1; purchased.forEach(purchase => { %>
+                    <li>
+                        <div class="query">
+                            <a href="/game/<%= purchase.gameid.id%>"><img src="<%= purchase.gameid.img.title_img %>" alt=""></a>
+                            
+                            <h2><%= j%> <a href="/game/<%= purchase.gameid.id%>"><%= purchase.gameid.name%></a></h2>
+                            
+                            <p><%= purchase.gameid.desc %></p>
+                        </div>
+                    </li>
+                    <% j=j+1 %> 
+                <% }); %> 
+                
             </ol>
         </div>
         <div class="reviews">

@@ -12,10 +12,11 @@ const options = {
     "description": "Test Transaction",
     "image": "https://i.imgur.com/hSeRyai.jpg",
     "order_id": order.id,
-    "handler": function (res){
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature)
+    "handler": async (res) => {
+        alert(res.razorpay_payment_id);
+        //alert(res.razorpay_order_id);
+        //alert(res.razorpay_signature)
+        await fetch("http://localhost:3000/razorpay/success", {method : 'POST'})
     }
 };
 

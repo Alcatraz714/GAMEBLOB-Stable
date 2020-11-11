@@ -17,7 +17,9 @@ const userSchema = new mongoose.Schema({
         default : "user"
     },
     ownedGames : [{
-        gameid : mongoose.Schema.Types.ObjectId
+        gameid : {
+            type: mongoose.Schema.Types.ObjectId,
+        }
     }]
 })
 

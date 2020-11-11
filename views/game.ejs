@@ -40,7 +40,11 @@
             </div>
             <div class="buyfr">
                 <div><h3>Now Available for Purchase:</h3></div>
+                <% if(loggedInUser){ %> 
                 <div><a class="btn btn-outline-success buy" href="#" role="button">Buy for ₹ <span id="price"><%= games.price%></span></a></div>
+                <% }else{ %> 
+                <div><a class="btn btn-outline-success buy disabled" href="#" role="button">Buy for ₹ <span id="price"><%= games.price%></span></a></div>
+                <% } %> 
             </div>
             <hr>
             <div class="about">
