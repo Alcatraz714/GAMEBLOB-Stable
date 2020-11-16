@@ -64,6 +64,7 @@ router.post("/addGame",validateSchema,  CatchAsync(async (req,res,next) => {
     req.body.game.critic = req.body.critic
     const gameToAdd = req.body.game
     await game.create(gameToAdd, (game, err) => {
+        console.log(game)
         res.redirect("/admin/addGame")
     })
     

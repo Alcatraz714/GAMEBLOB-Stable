@@ -10,20 +10,40 @@ const express = require("express"),
       LocalStratergy = require("passport-local"),
       flash = require("connect-flash"),
       isLoggedin = require("./views/assets/js/checkLogin.js"),
-      {nanoid} = require("nanoid")
-    
+      {nanoid} = require("nanoid"),
+      mongodbstore = require('connect-mongo')(session)
+
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config()
+}
+
 const adminRoute = require('./routes/admin.js'),
       homeRoute = require("./routes/home.js"),
       userRoute = require("./routes/user.js")
 
 const Razorpay = require('razorpay')
 const instance = new Razorpay({
-    key_id: 'rzp_test_sCDpgdASPFOPWV',
-    key_secret: 'lOQkognU48Z6uBksRHD4mGcC'
+    key_id: process.env.razorpay_key_id, //your razorypay key id goes here
+    key_secret: process.env.razorpay_key_secret //your razorypay key secret goes here
+})
+
+const db_url = process.env.db_url || 'mongodb://localhost:27017/gameblob'
+const secret = process.env.session_key || "gameblobisawesome"
+mongoose.connect(db_url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true});
+
+const mongoStore = new mongodbstore({
+    url : db_url,
+    secret,
+    touchAfter : 24 * 60 * 60 //1 day
+})
+
+mongoStore.on('error', (err)=>{
+    console.log("Store Session Error: ", err)
 })
 
 const sessionConfig = {
-    secret : "gameblobisawesome",
+    store : mongoStore,
+    secret, //your razorpay session secret goes here
     resave : false,
     saveUninitialized : true,
     cookie : {
@@ -32,8 +52,6 @@ const sessionConfig = {
         maxAge : 8.64e+7 * 7
     }
 }
-
-
 
 app.use(session(sessionConfig))
 app.use(bodyParser.urlencoded({extended:true}))
@@ -53,16 +71,12 @@ app.use((req, res, next)=>{
     next()
 })
 
-mongoose.connect('mongodb://localhost:27017/gameblob', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true});
-
 const game = require("./models/games.js"),
       user = require("./models/users.js"),
       comment = require("./models/comments.js"),
       feedback = require("./models/feedback.js"),
       purchase = require("./models/purchased.js")
 const isLoggedIn = require("./views/assets/js/checkLogin.js")
-const { response } = require("express")
-const { compile } = require("joi")
 
 passport.use(new LocalStratergy(user.authenticate()))
 passport.serializeUser(user.serializeUser())
@@ -114,8 +128,8 @@ app.post("/comments", isLoggedin, CatchAsync(async (req, res)=>{
 app.get("/user/:user",isLoggedIn, async (req,res)=>{
     req.session.return = req.originalUrl
     const uname = req.user.username
-    const purchased = await purchase.find({user:req.user.userid}).populate('gameid')
-    console.log(purchased)
+    const purchased = await purchase.find({userid :req.user.id}).populate('gameid')
+    //console.log(purchased,req.user.id)
     const comments = await comment.find({user : req.user.id}).populate('game').populate('user','username').sort({$natural:-1}).limit(3)
     //console.log(comments)
     res.render("profile.ejs",{comments:comments, uname:uname, purchased : purchased})
@@ -130,12 +144,12 @@ app.post("/razorpay", async (req,res)=> {
             amount : (amount*100).toString(), 
             currency,
             payment_capture,
-            receipt : nanoid()
+            receipt : nanoid(),
+            key : process.env.razorpay_key_id
         }
         
         const order = await instance.orders.create(obj)
         //console.log(order)
-        await user.update({username : req.user.username},{$push : {ownedGames : {gid}}})
         res.json({
             amount : order.amount,
             currency : order.currency,
@@ -156,6 +170,7 @@ app.post("/razorpay/success", async (req,res)=>{
         userid : req.user.id
     }
     await purchase.create(obj)
+    await user.updateOne({username : req.user.username},{$push : {ownedGames : {gid}}})
     res.redirect(req.session.return)
 })
 

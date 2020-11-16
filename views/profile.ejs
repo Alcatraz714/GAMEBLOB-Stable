@@ -36,7 +36,7 @@
                             <p><%= comment.game.desc.split(".")[0]+comment.game.desc.split(".")[1]%></p>
                             <h3>Rating - </h3>
                             <p class="rating"><%= comment.game.rating %>/10</p>
-                            <button type="button" class="btn btn-info float-right">More Info</button>
+                            <a href="/game/<%= comment.game.id %>"><button type="button" class="btn btn-info float-right">More Info</button></a>
                         </div>
                     </li>
                 <% }); %> 

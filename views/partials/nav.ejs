@@ -6,13 +6,13 @@
             <div class="collapse navbar-collapse"
                 id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/home">Home <span class="sr-only">(current)</span></a></li>
                     <% if(loggedInUser){ %> 
-                        <li class="nav-item"><a class="nav-link" href="/user/<%= loggedInUser.username %>"><%= loggedInUser.username %></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/user/<%= loggedInUser.username %>"><%= loggedInUser.username %></a></li>
                     <% }else{ %>
-                        <li class="nav-item"><a class="nav-link" href="/user/xyz">My Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/user/xyz">My Profile</a></li>
                     <% } %> 
-                    <li class="nav-item"><a class="nav-link" href="/home/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/home/about">About</a></li>
                 </ul>
                     <ul class="navbar-nav navbar-right" style="margin-left: 0px;">
                         <form class="form-inline my-2 my-lg-0 ml-auto" method="GET" action="/home/search"><input class="form-control mr-sm-2" name="q" type="search" placeholder="Search for a game" /><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button></form>

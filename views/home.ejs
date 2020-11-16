@@ -13,25 +13,15 @@
             </ol>
             
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                <a href="/game/<%= car_game[0]._id%>"> <img class="d-block w-100" src="<%= car_game[0].img.high_res[0]%>"></a>
-                <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[0].desc.split(".")[0] %></p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <a href="/game/<%= car_game[1]._id%>"><img class="d-block w-100" src="<%= car_game[1].img.high_res[0]%>"></a>
-                <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[1].desc.split(".")[0]%></p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <a href="/game/<%= car_game[2]._id%>"><img class="d-block w-100" src="<%= car_game[2].img.high_res[0]%>"></a>
-                <div class="carousel-caption d-none d-md-block">
-                    <p><%= car_game[2].desc.split(".")[0]%></p>
-                </div>
-            </div> 
-            
+                <% car_game.forEach(game => { %>
+                    <div class="carousel-item">
+                        <a href="/game/<%= game._id%>"> <img class="d-block w-100" src="<%= game.img.high_res[0]%>"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <p><%= game.desc.split(".")[0] %></p>
+                        </div>
+                    </div>
+                <% }) %>
+                <script>document.getElementsByClassName('carousel-item')[0].classList.add('active') </script> 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
